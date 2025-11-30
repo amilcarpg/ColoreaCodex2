@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Relleno de Imagen (Tipo Paint)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Relleno de Imagen</h1>
+    <div class="toolbar">
+      <label class="tool-item">
+        Cargar imagen (PNG/JPG)
+        <input type="file" id="imageLoader" accept="image/png, image/jpeg">
+      </label>
+
+      <label class="tool-item">
+        Color
+        <input type="color" id="colorPicker" value="#ff0000">
+      </label>
+
+      <div class="tool-item mode-buttons">
+        <button id="fillModeBtn" class="active">Rellenar</button>
+        <button id="eraseModeBtn">Borrador</button>
+      </div>
+
+      <button id="resetBtn" class="tool-item">Reiniciar imagen</button>
+    </div>
+  </header>
+
+  <main>
+    <canvas id="canvas"></canvas>
+    <p class="hint">
+      1) Carga una imagen con zonas blancas.<br>
+      2) Elige un color.<br>
+      3) Haz clic sobre un área para rellenarla.<br>
+      4) Usa "Borrador" para volver a blanco.
+    </p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
