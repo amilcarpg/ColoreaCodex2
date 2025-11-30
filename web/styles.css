@@ -37,8 +37,20 @@ header h1 {
   font-size: 14px;
 }
 
-.tool-item input[type="file"] {
-  font-size: 12px;
+.tool-item.column {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 160px;
+}
+
+.tool-item select,
+.tool-item input[type="color"] {
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 14px;
 }
 
 .mode-buttons button {
@@ -70,6 +82,27 @@ header h1 {
 
 #resetBtn:hover {
   background: #f5f5f5;
+}
+
+.status {
+  font-size: 13px;
+  color: #444;
+  padding: 8px 10px;
+  background: #f9f9f9;
+  border: 1px dashed #ddd;
+  border-radius: 6px;
+}
+
+.status[data-state="success"] {
+  color: #1b5e20;
+  background: #f1fff4;
+  border-color: #cfe9d8;
+}
+
+.status[data-state="error"] {
+  color: #b00020;
+  background: #fff3f3;
+  border-color: #f5c2c7;
 }
 
 main {

@@ -9,10 +9,15 @@
   <header>
     <h1>Relleno de Imagen</h1>
     <div class="toolbar">
-      <label class="tool-item">
-        Cargar imagen (PNG/JPG)
-        <input type="file" id="imageLoader" accept="image/png, image/jpeg">
-      </label>
+      <div class="tool-item column">
+        <label for="categorySelect">Categoria</label>
+        <select id="categorySelect"></select>
+      </div>
+
+      <div class="tool-item column">
+        <label for="imageSelect">Imagen</label>
+        <select id="imageSelect"></select>
+      </div>
 
       <label class="tool-item">
         Color
@@ -26,14 +31,15 @@
 
       <button id="resetBtn" class="tool-item">Reiniciar imagen</button>
     </div>
+    <div id="status" class="status">Selecciona una imagen de la lista para empezar.</div>
   </header>
 
   <main>
     <canvas id="canvas"></canvas>
     <p class="hint">
-      1) Carga una imagen con zonas blancas.<br>
+      1) Elige una categoria y una imagen disponible.<br>
       2) Elige un color.<br>
-      3) Haz clic sobre un área para rellenarla.<br>
+      3) Haz clic sobre un area para rellenarla.<br>
       4) Usa "Borrador" para volver a blanco.
     </p>
   </main>
