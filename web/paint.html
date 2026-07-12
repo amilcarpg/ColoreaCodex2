@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relleno de Imagen (Tipo Paint)</title>
+  <link rel="stylesheet" href="paint.css">
+</head>
+<body>
+  <header>
+    <h1>Relleno de Imagen</h1>
+    <div class="toolbar">
+      <div class="tool-item column">
+        <label for="categorySelect">Categoria</label>
+        <select id="categorySelect"></select>
+      </div>
+
+      <div class="tool-item column">
+        <label for="imageSelect">Imagen</label>
+        <select id="imageSelect"></select>
+      </div>
+
+      <label class="tool-item">
+        Color
+        <input type="color" id="colorPicker" value="#ff0000">
+      </label>
+
+      <div class="tool-item mode-buttons">
+        <button id="fillModeBtn" class="active">Rellenar</button>
+        <button id="eraseModeBtn">Borrador</button>
+      </div>
+
+      <button id="resetBtn" class="tool-item">Reiniciar imagen</button>
+    </div>
+    <div id="status" class="status">Selecciona una imagen de la lista para empezar.</div>
+  </header>
+
+  <main>
+    <canvas id="canvas"></canvas>
+    <p class="hint">
+      1) Elige una categoria y una imagen disponible.<br>
+      2) Elige un color.<br>
+      3) Haz clic sobre un area para rellenarla.<br>
+      4) Usa "Borrador" para volver a blanco.
+    </p>
+  </main>
+
+  <script src="paint.js"></script>
+</body>
+</html>

@@ -1,4 +1,3 @@
-// Referencias al DOM
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const categorySelect = document.getElementById('categorySelect');
@@ -9,7 +8,6 @@ const eraseModeBtn = document.getElementById('eraseModeBtn');
 const resetBtn = document.getElementById('resetBtn');
 const statusText = document.getElementById('status');
 
-// Catalogo de assets locales (carpetas por tipo)
 const assetsByCategory = {
   formas: [
     { file: 'casa.png', label: 'Casa simple' },
@@ -20,18 +18,15 @@ const assetsByCategory = {
   ],
 };
 
-// Estado
-let currentMode = 'fill'; // 'fill' | 'erase'
-let originalImage = null; // ImageData de la imagen original cargada
+let currentMode = 'fill';
+let originalImage = null;
 let imageLoaded = false;
 
-// Configuracion inicial del canvas
 canvas.width = 800;
 canvas.height = 600;
 clearCanvas();
 initAssetSelectors();
 
-// Modos: rellenar / borrar
 fillModeBtn.addEventListener('click', () => {
   currentMode = 'fill';
   fillModeBtn.classList.add('active');
@@ -44,14 +39,12 @@ eraseModeBtn.addEventListener('click', () => {
   fillModeBtn.classList.remove('active');
 });
 
-// Reiniciar imagen
 resetBtn.addEventListener('click', () => {
   if (!imageLoaded || !originalImage) return;
   ctx.putImageData(originalImage, 0, 0);
   setStatus('Imagen restaurada.', 'info');
 });
 
-// Click en canvas para rellenar / borrar
 canvas.addEventListener('click', (e) => {
   if (!imageLoaded) return;
 
@@ -65,14 +58,12 @@ canvas.addEventListener('click', (e) => {
     const fillColor = hexToRgba(colorPicker.value, 255);
     floodFill(imageData, x, y, fillColor);
   } else if (currentMode === 'erase') {
-    const eraseColor = [255, 255, 255, 255]; // blanco
-    floodFill(imageData, x, y, eraseColor);
+    floodFill(imageData, x, y, [255, 255, 255, 255]);
   }
 
   ctx.putImageData(imageData, 0, 0);
 });
 
-// Inicializa selects con assets locales
 function initAssetSelectors() {
   const categories = Object.keys(assetsByCategory);
   if (!categories.length) {
@@ -156,17 +147,15 @@ function clearCanvas() {
 }
 
 function setStatus(message, state = 'info') {
-  if (statusText) {
-    statusText.textContent = message;
-    statusText.dataset.state = state;
-  }
+  if (!statusText) return;
+  statusText.textContent = message;
+  statusText.dataset.state = state;
 }
 
 function formatLabel(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-// Algoritmo de flood fill (scanline / BFS iterativo)
 function floodFill(imageData, startX, startY, fillColor) {
   const { width, height, data } = imageData;
   const stack = [];
@@ -179,18 +168,15 @@ function floodFill(imageData, startX, startY, fillColor) {
     data[startPos + 3],
   ];
 
-  // Si el color objetivo es igual al de relleno, no hacer nada
   if (colorsMatch(targetColor, fillColor)) return;
 
   stack.push([startX, startY]);
-
-  const tolerance = 20; // tolerancia para considerar colores "iguales"
+  const tolerance = 20;
 
   while (stack.length > 0) {
     const [x, y] = stack.pop();
     let currentX = x;
 
-    // Buscar borde izquierdo
     while (currentX >= 0 && colorWithinTolerance(imageData, currentX, y, targetColor, tolerance)) {
       currentX--;
     }
@@ -198,11 +184,9 @@ function floodFill(imageData, startX, startY, fillColor) {
     let spanAbove = false;
     let spanBelow = false;
 
-    // Rellenar hacia la derecha
     while (currentX < width && colorWithinTolerance(imageData, currentX, y, targetColor, tolerance)) {
       setPixel(imageData, currentX, y, fillColor);
 
-      // Fila superior
       if (y > 0) {
         if (colorWithinTolerance(imageData, currentX, y - 1, targetColor, tolerance)) {
           if (!spanAbove) {
@@ -214,7 +198,6 @@ function floodFill(imageData, startX, startY, fillColor) {
         }
       }
 
-      // Fila inferior
       if (y < height - 1) {
         if (colorWithinTolerance(imageData, currentX, y + 1, targetColor, tolerance)) {
           if (!spanBelow) {
@@ -239,16 +222,10 @@ function colorWithinTolerance(imageData, x, y, targetColor, tolerance) {
   const { data, width, height } = imageData;
   if (x < 0 || x >= width || y < 0 || y >= height) return false;
   const offset = getPixelOffset(imageData, x, y);
-  const r = data[offset];
-  const g = data[offset + 1];
-  const b = data[offset + 2];
-  const a = data[offset + 3];
-
-  const dr = r - targetColor[0];
-  const dg = g - targetColor[1];
-  const db = b - targetColor[2];
-  const da = a - targetColor[3];
-
+  const dr = data[offset] - targetColor[0];
+  const dg = data[offset + 1] - targetColor[1];
+  const db = data[offset + 2] - targetColor[2];
+  const da = data[offset + 3] - targetColor[3];
   const distanceSq = dr * dr + dg * dg + db * db + da * da;
   return distanceSq <= tolerance * tolerance;
 }
@@ -264,22 +241,24 @@ function setPixel(imageData, x, y, color) {
 
 function colorsMatch(c1, c2) {
   return c1[0] === c2[0] &&
-         c1[1] === c2[1] &&
-         c1[2] === c2[2] &&
-         c1[3] === c2[3];
+    c1[1] === c2[1] &&
+    c1[2] === c2[2] &&
+    c1[3] === c2[3];
 }
 
 function hexToRgba(hex, alpha = 255) {
-  hex = hex.replace('#', '');
-  let r, g, b;
-  if (hex.length === 3) {
-    r = parseInt(hex[0] + hex[0], 16);
-    g = parseInt(hex[1] + hex[1], 16);
-    b = parseInt(hex[2] + hex[2], 16);
+  const normalized = hex.replace('#', '');
+  let r;
+  let g;
+  let b;
+  if (normalized.length === 3) {
+    r = parseInt(normalized[0] + normalized[0], 16);
+    g = parseInt(normalized[1] + normalized[1], 16);
+    b = parseInt(normalized[2] + normalized[2], 16);
   } else {
-    r = parseInt(hex.substring(0, 2), 16);
-    g = parseInt(hex.substring(2, 4), 16);
-    b = parseInt(hex.substring(4, 6), 16);
+    r = parseInt(normalized.substring(0, 2), 16);
+    g = parseInt(normalized.substring(2, 4), 16);
+    b = parseInt(normalized.substring(4, 6), 16);
   }
   return [r, g, b, alpha];
 }

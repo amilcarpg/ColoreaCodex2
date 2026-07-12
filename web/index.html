@@ -2,48 +2,338 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Relleno de Imagen (Tipo Paint)</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaintMe.club | Dibujos para colorear gratis online</title>
+  <meta name="description" content="Dibujos para colorear gratis online para niños y familias. Elige un dibujo, toca para colorear y guarda tu creación en PNG.">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
-  <header>
-    <h1>Relleno de Imagen</h1>
-    <div class="toolbar">
-      <div class="tool-item column">
-        <label for="categorySelect">Categoria</label>
-        <select id="categorySelect"></select>
+  <div class="page-shell">
+    <header class="site-header" id="inicio">
+      <a class="brand" href="#inicio" aria-label="PaintMe.club, volver al inicio">
+        <span class="brand-paint">Paint</span><span class="brand-me">Me</span><span class="brand-club">.club</span>
+      </a>
+      <nav class="site-nav" aria-label="Principal">
+        <a class="is-active" href="#inicio">Inicio</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#dibujos">Dibujos</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <div class="hero-copy">
+          <p class="eyebrow">Colorea online en segundos</p>
+          <h1>Dibujos para colorear gratis online</h1>
+          <p class="hero-text">Elige un dibujo, toca una zona y píntala al instante. Sin registro, desde tu celular o computadora.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="paint.html">Empezar a colorear</a>
+            <a class="btn btn-secondary" href="#categorias">Ver categorías</a>
+          </div>
+          <div class="hero-kid" aria-hidden="true">
+            <div class="kid-figure">
+              <div class="kid-head"></div>
+              <div class="kid-body"></div>
+              <div class="kid-tablet"></div>
+            </div>
+            <div class="pencil-cup">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-preview" aria-label="Vista previa de la aplicación para colorear">
+          <div class="preview-device">
+            <div class="preview-topbar">
+              <button type="button" aria-label="Volver">‹</button>
+              <div class="topbar-actions">
+                <button type="button" aria-label="Deshacer">↶</button>
+                <button type="button" aria-label="Rehacer">↷</button>
+              </div>
+              <button type="button" aria-label="Descargar">⤓</button>
+            </div>
+            <div class="preview-body">
+              <div class="drawing-surface">
+                <svg viewBox="0 0 320 320" role="img" aria-label="Dinosaurio coloreado en la app">
+                  <rect width="320" height="320" rx="24" fill="#fffdfa"/>
+                  <path d="M17 88h44M237 82h48M28 233h22M261 235h25" stroke="#2d3748" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M57 177c13-43 35-67 67-76 47-13 101 10 126 62 18 38 16 81-7 110-20 25-46 37-83 38-39 2-68-10-89-35-26-31-31-68-14-99Z" fill="#8fda35" stroke="#2d3748" stroke-width="5"/>
+                  <path d="M155 127c16-7 31-7 45 2 11 7 18 18 21 33-13 3-28 4-44 1-16-2-30-8-43-17 4-8 11-14 21-19Z" fill="#ffffff" stroke="#2d3748" stroke-width="5"/>
+                  <ellipse cx="187" cy="127" rx="17" ry="22" fill="#ffffff" stroke="#2d3748" stroke-width="5"/>
+                  <ellipse cx="191" cy="126" rx="8" ry="11" fill="#111827"/>
+                  <circle cx="194" cy="123" r="3" fill="#ffffff"/>
+                  <path d="M210 157c-4 10-15 19-33 26l-3-17c11-5 19-10 24-16l12 7Z" fill="#ffffff" stroke="#2d3748" stroke-width="5"/>
+                  <path d="M120 101l17-21 19 21M144 90l16-23 17 23M168 83l16-23 18 23" fill="none" stroke="#f38034" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M76 205c-5 23-1 44 11 62M115 222c-3 20 0 37 9 53M209 219c1 20 7 38 18 54M244 193c17 15 33 26 48 32" fill="none" stroke="#2d3748" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M63 244c-31 2-51-8-60-28 9-15 26-21 48-18l12 46Z" fill="#7bc943" stroke="#2d3748" stroke-width="5"/>
+                  <path d="M15 176c14-52 40-81 80-90" fill="none" stroke="#2d3748" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M255 124c13-39 37-57 73-56M270 153c16-4 31 0 45 12M256 179c14 4 26 14 36 29" fill="none" stroke="#2d3748" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M0 169h72l-18-59-26 16-18 43Z" fill="#7c7f87" stroke="#2d3748" stroke-width="5"/>
+                  <path d="m39 96 14 43H25l14-43Z" fill="#ff8a2a"/>
+                  <path d="M261 91c13-28 35-43 67-44" fill="none" stroke="#2d3748" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M267 95c5 28 5 63 0 106" fill="none" stroke="#2d3748" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M261 104c20 11 37 34 50 69" fill="none" stroke="#2d3748" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="palette" aria-hidden="true">
+                <span class="swatch coral"></span>
+                <span class="swatch orange"></span>
+                <span class="swatch yellow"></span>
+                <span class="swatch green"></span>
+                <span class="swatch sky"></span>
+                <span class="swatch blue"></span>
+                <span class="swatch purple"></span>
+                <span class="swatch brown"></span>
+                <span class="swatch pink"></span>
+              </div>
+            </div>
+            <div class="preview-toolbar" aria-hidden="true">
+              <span class="tool-pill is-selected">Balde</span>
+              <span class="tool-pill">Pincel</span>
+              <span class="tool-pill">Borrador</span>
+              <span class="tool-pill">Deshacer</span>
+              <span class="tool-pill">Más</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="benefits-section" aria-label="Beneficios principales">
+        <article class="benefit-card">
+          <span class="benefit-icon green">🎁</span>
+          <div>
+            <h2>Gratis</h2>
+            <p>100% gratis para todos.</p>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon blue">👤</span>
+          <div>
+            <h2>Sin registro</h2>
+            <p>Empieza a colorear al instante.</p>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon yellow">📱</span>
+          <div>
+            <h2>Funciona en móvil</h2>
+            <p>Desde tu celular, tableta o computadora.</p>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <span class="benefit-icon purple">🖼️</span>
+          <div>
+            <h2>Guarda en PNG</h2>
+            <p>Descarga y comparte tu dibujo.</p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-block" id="categorias">
+        <div class="section-heading">
+          <span class="spark">✦</span>
+          <h2>Categorías</h2>
+          <span class="spark">✦</span>
+        </div>
+        <div class="category-grid">
+          <a class="category-card lime" href="paint.html" aria-label="Ir a Animales">
+            <span class="art">🦁</span>
+            <strong>Animales</strong>
+          </a>
+          <a class="category-card blue" href="paint.html" aria-label="Ir a Vehículos">
+            <span class="art">🚗</span>
+            <strong>Vehículos</strong>
+          </a>
+          <a class="category-card coral" href="paint.html" aria-label="Ir a Navidad">
+            <span class="art">🎄</span>
+            <strong>Navidad</strong>
+          </a>
+          <a class="category-card violet" href="paint.html" aria-label="Ir a Fantasía">
+            <span class="art">🦄</span>
+            <strong>Fantasía</strong>
+          </a>
+          <a class="category-card mint" href="paint.html" aria-label="Ir a Dinosaurios">
+            <span class="art">🦖</span>
+            <strong>Dinosaurios</strong>
+          </a>
+          <a class="category-card pink" href="paint.html" aria-label="Ir a Princesas">
+            <span class="art">👸</span>
+            <strong>Princesas</strong>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-block" id="dibujos">
+        <div class="section-heading">
+          <span class="spark">✦</span>
+          <h2>Dibujos populares</h2>
+          <span class="spark">✦</span>
+        </div>
+        <div class="popular-grid">
+          <article class="popular-card">
+            <div class="sketch">🐱</div>
+            <a href="paint.html" class="mini-btn">Colorear</a>
+          </article>
+          <article class="popular-card">
+            <div class="sketch">🐶</div>
+            <a href="paint.html" class="mini-btn">Colorear</a>
+          </article>
+          <article class="popular-card">
+            <div class="sketch">🚘</div>
+            <a href="paint.html" class="mini-btn">Colorear</a>
+          </article>
+          <article class="popular-card">
+            <div class="sketch">🎄</div>
+            <a href="paint.html" class="mini-btn">Colorear</a>
+          </article>
+          <article class="popular-card">
+            <div class="sketch">🦕</div>
+            <a href="paint.html" class="mini-btn">Colorear</a>
+          </article>
+          <article class="popular-card">
+            <div class="sketch">🏰</div>
+            <a href="paint.html" class="mini-btn">Colorear</a>
+          </article>
+          <article class="popular-card">
+            <div class="sketch">🦋</div>
+            <a href="paint.html" class="mini-btn">Colorear</a>
+          </article>
+          <article class="popular-card">
+            <div class="sketch">🚀</div>
+            <a href="paint.html" class="mini-btn">Colorear</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <span class="spark">✦</span>
+          <h2>Cómo funciona</h2>
+          <span class="spark">✦</span>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-number">1</span>
+            <div class="step-copy">
+              <h3>1. Elige un dibujo</h3>
+              <p>Explora nuestras categorías y elige tu favorito.</p>
+            </div>
+            <div class="step-art">🖼️</div>
+          </article>
+          <article class="step-card">
+            <span class="step-number gold">2</span>
+            <div class="step-copy">
+              <h3>2. Toca para colorear</h3>
+              <p>Toca una zona y píntala con el color que más te guste.</p>
+            </div>
+            <div class="step-art">🎨</div>
+          </article>
+          <article class="step-card">
+            <span class="step-number green">3</span>
+            <div class="step-copy">
+              <h3>3. Guarda tu creación</h3>
+              <p>Descarga tu dibujo en PNG y compártelo con quien quieras.</p>
+            </div>
+            <div class="step-art">⬇️</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <span class="spark">✦</span>
+          <h2>Aprender jugando</h2>
+          <span class="spark">♥</span>
+        </div>
+        <div class="learning-grid">
+          <article class="learning-card sun">
+            <div class="learning-visual">💡</div>
+            <div>
+              <h3>Estimula la creatividad</h3>
+              <p>Colorear ayuda a los niños a expresarse, imaginar y crear sus propias historias.</p>
+            </div>
+          </article>
+          <article class="learning-card sky">
+            <div class="learning-visual">✍️</div>
+            <div>
+              <h3>Mejora la coordinación</h3>
+              <p>Tocar, seleccionar y colorear fortalece la motricidad fina y la concentración.</p>
+            </div>
+          </article>
+          <article class="learning-card mint">
+            <div class="learning-visual">😄</div>
+            <div>
+              <h3>Diversión sin complicaciones</h3>
+              <p>Una experiencia simple, segura y sin distracciones para disfrutar en familia.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block faq-block" id="faq">
+        <div class="section-heading">
+          <span class="spark">✦</span>
+          <h2>Preguntas frecuentes</h2>
+          <span class="spark">✦</span>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span>¿Necesito crear una cuenta?</span>
+              <span class="faq-plus">⌄</span>
+            </button>
+            <div class="faq-panel" hidden>
+              <p>No. Puedes empezar a colorear apenas entras, sin registro ni formularios.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span>¿Funciona en celular?</span>
+              <span class="faq-plus">⌄</span>
+            </button>
+            <div class="faq-panel" hidden>
+              <p>Sí. La experiencia está pensada para celular, tableta y computadora.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span>¿Puedo guardar mi dibujo?</span>
+              <span class="faq-plus">⌄</span>
+            </button>
+            <div class="faq-panel" hidden>
+              <p>Sí. Al terminar, puedes descargar tu creación y compartirla como PNG.</p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-trigger" type="button" aria-expanded="false">
+              <span>¿Tiene costo?</span>
+              <span class="faq-plus">⌄</span>
+            </button>
+            <div class="faq-panel" hidden>
+              <p>No. PaintMe.club ofrece dibujos para colorear gratis online para niños y familias.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <a class="brand footer-logo" href="#inicio">
+          <span class="brand-paint">Paint</span><span class="brand-me">Me</span><span class="brand-club">.club</span>
+        </a>
+        <p>Dibujos para colorear online para niños y familias.</p>
       </div>
+      <nav class="footer-nav" aria-label="Secundaria">
+        <a href="#inicio">Inicio</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#">Política de privacidad</a>
+        <a href="#">Contacto</a>
+      </nav>
+      <div class="footer-cloud" aria-hidden="true">☁︎</div>
+    </footer>
+  </div>
 
-      <div class="tool-item column">
-        <label for="imageSelect">Imagen</label>
-        <select id="imageSelect"></select>
-      </div>
-
-      <label class="tool-item">
-        Color
-        <input type="color" id="colorPicker" value="#ff0000">
-      </label>
-
-      <div class="tool-item mode-buttons">
-        <button id="fillModeBtn" class="active">Rellenar</button>
-        <button id="eraseModeBtn">Borrador</button>
-      </div>
-
-      <button id="resetBtn" class="tool-item">Reiniciar imagen</button>
-    </div>
-    <div id="status" class="status">Selecciona una imagen de la lista para empezar.</div>
-  </header>
-
-  <main>
-    <canvas id="canvas"></canvas>
-    <p class="hint">
-      1) Elige una categoria y una imagen disponible.<br>
-      2) Elige un color.<br>
-      3) Haz clic sobre un area para rellenarla.<br>
-      4) Usa "Borrador" para volver a blanco.
-    </p>
-  </main>
-
-  <script src="script.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
